@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "noEmitHelpers": false,
+    "target": "ES6",
+    "outDir": "dist/cjs",
+    "lib": ["dom", "es5", "es2015.collection", "es2015.promise"],
+    "strict": true,
+    "sourceMap": true
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": ["node_modules","**/node_modules", "**/dist", "**/test", "*.test.ts"]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "xaddress",
+  "version": "0.0.1",
+  "description": "Lotus xaddress format support for node.js and browsers",
+  "main": "./lib/cjs/index.js",
+  "types": "./lib/types/index.d.ts",
+  "module": "./lib/esm/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "tsc -b tsconfig.json tsconfig.esm.json tsconfig.types.json",
+    "eslint": "eslint . --ext .ts",
+    "eslint-fix": "eslint . --ext .ts --fix",
+    "test": "jest",
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "testMatch": [
+      "/**/*.test.ts"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cash",
+    "address",
+    "format",
+    "lotus",
+    "xaddress"
+  ],
+  "authors": [
+    "vince.tran8x@gmail.com"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bs58": "^4.0.1",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.10",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "@typescript-eslint/types": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstack-build/tslog.git"
+  },
+  "dependencies": {
+    "bs58": "^4.0.1"
+  }
+}
