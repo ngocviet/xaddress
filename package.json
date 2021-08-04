@@ -1,5 +1,5 @@
 {
-  "name": "xaddress",
+  "name": "@abcpros/xaddress",
   "version": "0.0.1",
   "description": "Lotus xaddress format support for node.js and browsers",
   "main": "./lib/cjs/index.js",
