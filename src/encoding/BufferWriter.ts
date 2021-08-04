@@ -1,4 +1,4 @@
-import { isBuffer, reverse } from "../utils/buffer";
+import { isBuffer, reverse } from '../utils/buffer';
 import assert from 'assert';
 
 export class BufferWriter {

@@ -9,10 +9,10 @@ export enum XAddressType {
  */
 export function _getAddressType(type: number): XAddressType {
   switch (type) {
-    case 0:
-      return XAddressType.ScriptPubKey;
-    default:
-      throw new Error('Unknown address type');
+  case 0:
+    return XAddressType.ScriptPubKey;
+  default:
+    throw new Error('Unknown address type');
   }
 }
 
@@ -23,9 +23,9 @@ export function _getAddressType(type: number): XAddressType {
  */
 export function _getAddressTypeNumber(type: XAddressType): number {
   switch (type) {
-    case XAddressType.ScriptPubKey:
-      return 0;
-    default:
-      throw new Error('Unknown address type');
+  case XAddressType.ScriptPubKey:
+    return 0;
+  default:
+    throw new Error('Unknown address type');
   }
 }

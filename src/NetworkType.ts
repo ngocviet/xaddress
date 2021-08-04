@@ -1,5 +1,8 @@
 export enum NetworkType {
-  MAIN, TEST, REGTEST, SCALINGTEST
+  MAIN, 
+  TEST, 
+  REGTEST, 
+  SCALINGTEST
 }
 
 /**
@@ -9,14 +12,14 @@ export enum NetworkType {
  */
 export function _getNetworkType(network: string): NetworkType {
   switch (network) {
-    case '_':
-      return NetworkType.MAIN;
-    case 'T':
-      return NetworkType.TEST;
-    case 'R':
-      return NetworkType.REGTEST;
-    default:
-      throw new Error('Unknown network type');
+  case '_':
+    return NetworkType.MAIN;
+  case 'T':
+    return NetworkType.TEST;
+  case 'R':
+    return NetworkType.REGTEST;
+  default:
+    throw new Error('Unknown network type');
   }
 }
 
@@ -34,15 +37,15 @@ export function _getNetworkByte(networkType: NetworkType): number {
  * @param {NetworkType} networkType The network type
  * @returns The string represent network byte
  */
- export function _getNetworkChar(networkType: NetworkType): string {
+export function _getNetworkChar(networkType: NetworkType): string {
   switch (networkType) {
-    case NetworkType.MAIN:
-      return '_';
-    case NetworkType.TEST:
-      return 'T';
-    case NetworkType.REGTEST:
-      return 'R';
-    default:
-      throw new Error('Unknown network type');
+  case NetworkType.MAIN:
+    return '_';
+  case NetworkType.TEST:
+    return 'T';
+  case NetworkType.REGTEST:
+    return 'R';
+  default:
+    throw new Error('Unknown network type');
   }
 }

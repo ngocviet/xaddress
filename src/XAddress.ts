@@ -1,9 +1,9 @@
-import base58 from "bs58";
-import { createHash } from "crypto";
-import { BufferWriter } from "./encoding/BufferWriter";
-import { NetworkType, _getNetworkByte, _getNetworkChar, _getNetworkType } from "./NetworkType";
-import { validate } from "./Validation";
-import { XAddressType, _getAddressType, _getAddressTypeNumber } from "./XAddressType";
+import base58 from 'bs58';
+import { createHash } from 'crypto';
+import { BufferWriter } from './encoding/BufferWriter';
+import { NetworkType, _getNetworkByte, _getNetworkChar, _getNetworkType } from './NetworkType';
+import { validate } from './Validation';
+import { XAddressType, _getAddressType, _getAddressTypeNumber } from './XAddressType';
 
 
 

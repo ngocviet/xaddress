@@ -1,4 +1,4 @@
-import "ts-jest";
+import 'ts-jest';
 import { XAddress, NetworkType, XAddressType } from '../src';
 
 describe('XAddress', () => {
@@ -23,17 +23,17 @@ describe('XAddress', () => {
     'lotus_1PrQz5R11Ae1YcbvUpGDSvzPP2GsVw6E7mthMV'
   ];
 
-  test("XAddress P2PKH", (): void => {
+  test('XAddress P2PKH', (): void => {
     for (const index in TEST_HASHES_P2PKH) {
       const x = new XAddress(XAddressType.ScriptPubKey, NetworkType.MAIN, Buffer.from(TEST_HASHES_P2PKH[index]), 'lotus');
       expect(x.toString()).toEqual(EXPECTED_P2PKH_OUTPUTS[index]);
     }
   });
 
-  test("XAddress P2SH", (): void => {
+  test('XAddress P2SH', (): void => {
     for (const index in TEST_HASHES_P2SH) {
       const x = new XAddress(XAddressType.ScriptPubKey, NetworkType.MAIN, Buffer.from(TEST_HASHES_P2SH[index]), 'lotus');
       expect(x.toString()).toEqual(EXPECTED_P2SH_OUTPUTS[index]);
     }
   });
-})
+});
