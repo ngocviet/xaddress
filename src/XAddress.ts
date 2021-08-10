@@ -16,12 +16,12 @@ const TOKEN_NAME = 'lotus';
  * {@link https://givelotus.org/docs/specs/lotus/addresses}
  */
 export class XAddress {
-  xtype: XAddressType;  // XType here is not address type (P2PKH, P2SH). Currently it's always 0 (ScriptPubKey)
+  xType: XAddressType;  // XType here is not address type (P2PKH, P2SH). Currently it's always 0 (ScriptPubKey)
   network: NetworkType;
   payload: Buffer;
   prefix: string;
-  constructor(xtype: XAddressType = XAddressType.ScriptPubKey, network: NetworkType, payload: Buffer, prefix: string = TOKEN_NAME) {
-    this.xtype = xtype;
+  constructor(xType: XAddressType = XAddressType.ScriptPubKey, network: NetworkType, payload: Buffer, prefix: string = TOKEN_NAME) {
+    this.xType = xType;
     this.network = network;
     this.payload = payload;
     this.prefix = prefix;
@@ -77,7 +77,7 @@ export class XAddress {
    */
   static encode(xaddress: XAddress): string {
     const networkChar = _getNetworkChar(xaddress.network);
-    const addressTypeNumber = _getAddressXTypeNumber(xaddress.xtype);
+    const addressTypeNumber = _getAddressXTypeNumber(xaddress.xType);
     const payload = xaddress.payload;
     const checksum = XAddress.createChecksum(xaddress);
     const encodedPayload = XAddress.encodePayload(addressTypeNumber, payload, checksum);
@@ -100,7 +100,7 @@ export class XAddress {
    */
   private static createChecksum(address: XAddress): Buffer {
     const addressTypeBuf = Buffer.alloc(1);
-    addressTypeBuf.writeUInt8(_getAddressXTypeNumber(address.xtype), 0);
+    addressTypeBuf.writeUInt8(_getAddressXTypeNumber(address.xType), 0);
     const networkTypeBuf = Buffer.alloc(1);
     networkTypeBuf.writeUInt8(_getNetworkByte(address.network), 0);
     const bufArr: Buffer[] = [
@@ -124,7 +124,7 @@ export class XAddress {
     bw.writeVarintNum(address.prefix.length);
     bw.write(Buffer.from(address.prefix));
     bw.writeUInt8(_getNetworkByte(address.network));
-    bw.writeUInt8(_getAddressXTypeNumber(address.xtype));
+    bw.writeUInt8(_getAddressXTypeNumber(address.xType));
     bw.writeVarintNum(address.payload.length);
     bw.write(address.payload);
     const buf = bw.concat();
