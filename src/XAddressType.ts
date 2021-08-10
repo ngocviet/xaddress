@@ -3,29 +3,29 @@ export enum XAddressType {
 }
 
 /**
- * Get the address type from type value
- * @param {number} type The address type byte value
+ * Get the address xtype from type value
+ * @param {number} xtype The address type byte value
  * @returns {XAddressType} The address type
  */
-export function _getAddressType(type: number): XAddressType {
-  switch (type) {
+export function _getAddressType(xtype: number): XAddressType {
+  switch (xtype) {
   case 0:
     return XAddressType.ScriptPubKey;
   default:
-    throw new Error('Unknown address type');
+    throw new Error('Unknown address xtype');
   }
 }
 
 /**
  * Get the address type number
- * @param {XAddressType} type The address type
- * @returns The number represent address type
+ * @param {XAddressType} type The address xtype
+ * @returns The number represent address xtype
  */
-export function _getAddressTypeNumber(type: XAddressType): number {
-  switch (type) {
+export function _getAddressXTypeNumber(xtype: XAddressType): number {
+  switch (xtype) {
   case XAddressType.ScriptPubKey:
     return 0;
   default:
-    throw new Error('Unknown address type');
+    throw new Error('Unknown address xtype');
   }
 }

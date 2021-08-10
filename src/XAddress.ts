@@ -3,7 +3,7 @@ import { createHash } from 'crypto';
 import { BufferWriter } from './encoding/BufferWriter';
 import { NetworkType, _getNetworkByte, _getNetworkChar, _getNetworkType } from './NetworkType';
 import { validate } from './Validation';
-import { XAddressType, _getAddressType, _getAddressTypeNumber } from './XAddressType';
+import { XAddressType, _getAddressType, _getAddressXTypeNumber } from './XAddressType';
 
 
 
@@ -16,13 +16,12 @@ const TOKEN_NAME = 'lotus';
  * {@link https://givelotus.org/docs/specs/lotus/addresses}
  */
 export class XAddress {
-
-  type: XAddressType;
+  xtype: XAddressType;  // XType here is not address type (P2PKH, P2SH). Currently it's always 0 (ScriptPubKey)
   network: NetworkType;
   payload: Buffer;
   prefix: string;
-  constructor(type: XAddressType = XAddressType.ScriptPubKey, network: NetworkType, payload: Buffer, prefix: string = TOKEN_NAME) {
-    this.type = type;
+  constructor(xtype: XAddressType = XAddressType.ScriptPubKey, network: NetworkType, payload: Buffer, prefix: string = TOKEN_NAME) {
+    this.xtype = xtype;
     this.network = network;
     this.payload = payload;
     this.prefix = prefix;
@@ -78,7 +77,7 @@ export class XAddress {
    */
   static encode(xaddress: XAddress): string {
     const networkChar = _getNetworkChar(xaddress.network);
-    const addressTypeNumber = _getAddressTypeNumber(xaddress.type);
+    const addressTypeNumber = _getAddressXTypeNumber(xaddress.xtype);
     const payload = xaddress.payload;
     const checksum = XAddress.createChecksum(xaddress);
     const encodedPayload = XAddress.encodePayload(addressTypeNumber, payload, checksum);
@@ -101,9 +100,9 @@ export class XAddress {
    */
   private static createChecksum(address: XAddress): Buffer {
     const addressTypeBuf = Buffer.alloc(1);
-    addressTypeBuf.writeUInt8(_getAddressTypeNumber(address.type));
+    addressTypeBuf.writeUInt8(_getAddressXTypeNumber(address.xtype), 0);
     const networkTypeBuf = Buffer.alloc(1);
-    networkTypeBuf.writeUInt8(_getNetworkByte(address.network));
+    networkTypeBuf.writeUInt8(_getNetworkByte(address.network), 0);
     const bufArr: Buffer[] = [
       Buffer.from(address.prefix),
       networkTypeBuf,
@@ -125,7 +124,7 @@ export class XAddress {
     bw.writeVarintNum(address.prefix.length);
     bw.write(Buffer.from(address.prefix));
     bw.writeUInt8(_getNetworkByte(address.network));
-    bw.writeUInt8(_getAddressTypeNumber(address.type));
+    bw.writeUInt8(_getAddressXTypeNumber(address.xtype));
     bw.writeVarintNum(address.payload.length);
     bw.write(address.payload);
     const buf = bw.concat();
