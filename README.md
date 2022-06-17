@@ -11,7 +11,7 @@ Compliant with the xaddress [specification](https://givelotus.org/docs/specs/lot
 ### Using NPM
 
 ```bsh
-$ npm install --save @abcpros/xaddress
+$ npm install --save @bcpros/xaddress
 ```
 
 ## Usage
@@ -19,8 +19,8 @@ $ npm install --save @abcpros/xaddress
 ### In Node.js
 
 ```javascript
-const xaddress = require('xaddress');
-const address = 'lotus_16PSJLk9W86KAZp26x3uM176w6N9vUU8YNQQnQTHN';
+const xaddress = require("xaddress");
+const address = "lotus_16PSJLk9W86KAZp26x3uM176w6N9vUU8YNQQnQTHN";
 const { prefix, type, payload, network } = XAddress.decode(address);
 console.log(prefix); // 'lotus'
 console.log(network); // MAIN
